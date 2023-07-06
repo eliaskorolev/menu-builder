@@ -3,29 +3,41 @@
 
 forked from https://github.com/lordmacu/wmenu
 
+forked from https://github.com/harimayco/wmenu-builder
+
 ![Laravel drag and drop menu](https://raw.githubusercontent.com/harimayco/wmenu-builder/master/screenshot.png)
 
 ### Installation
 
-1. Run
+1. In composer.json add this lines after ``` "require-dev" ```
 
-```php
-composer require harimayco/laravel-menu
+```json
+
+      "repositories": [
+        {
+          "type": "vcs",
+          "url": "https://github.com/eliaskorolev/menu-builder.git"
+        }
+      ]
+ 
 ```
 
-**_Step 2 & 3 are optional if you are using laravel 5.5_**
 
-2. Add the following class, to "providers" array in the file config/app.php (optional on laravel 5.5)
+
+2. In composer.json ``` require ``` add this line at 
+
+```json
+ "eliaskorolev/menu-builder": "^0.3" 
+ ```
+
+
+3. Run this command in terminal
 
 ```php
-Eliaskorolev\Menu\MenuServiceProvider::class,
+composer install 
 ```
 
-3. add facade in the file config/app.php (optional on laravel 5.5)
-
-```php
-'Menu' => Eliaskorolev\Menu\Facades\Menu::class,
-```
+Composer will ask you a token to download this package from private repository - take it from the author
 
 4. Run publish
 
@@ -33,15 +45,8 @@ Eliaskorolev\Menu\MenuServiceProvider::class,
 php artisan vendor:publish --provider="Eliaskorolev\Menu\MenuServiceProvider"
 ```
 
-5. Configure (optional) in **_config/menu.php_** :
 
-- **_CUSTOM MIDDLEWARE:_** You can add you own middleware
-- **_TABLE PREFIX:_** By default this package will create 2 new tables named "menus" and "menu_items" but you can still add your own table prefix avoiding conflict with existing table
-- **_TABLE NAMES_** If you want use specific name of tables you have to modify that and the migrations
-- **_Custom routes_** If you want to edit the route path you can edit the field
-- **_Role Access_** If you want to enable roles (permissions) on menu items
-
-6. Run migrate
+5. Run migrate
 
 ```php
 php artisan migrate
@@ -175,10 +180,8 @@ you can edit the menu interface in **_resources/views/vendor/wmenu/menu-html.bla
 ### Credits
 
 - [wmenu](https://github.com/lordmacu/wmenu) laravel package menu like wordpress
+- [wmenu-builder](https://github.com/harimayco/wmenu-builder) laravel package menu like wordpress
 
 ### Compatibility
 
-- Tested with laravel 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 6.x, 7.x
-
-### KNOWN ISSUES
-- Not working with RTL websites [#21](https://github.com/harimayco/wmenu-builder/issues/21) (pull requests are welcome)
+- Tested with laravel 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 6.x, 7.x, ...., 10.x
